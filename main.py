@@ -1,28 +1,28 @@
-# coding=utf-8
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from db.users import UserActivity, AdminActivity, UserCart
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print("Hi, {0}".format(name))  # Press Ctrl+F8 to toggle the breakpoint.
+def menu():
+    print("1. category 2. exit")
 
 
-# Press the green button in the gutter to run the script.
+def main():
+    print('******************************************************')
+    print('MY CART'.center(50))
+    print('******************************************************')
+    useract = UserActivity()
+    adminact = AdminActivity()
+    cart = UserCart()
+    flag = True
+
+    while flag:
+        print("select your choice")
+        menu()
+        choice = input()
+        if choice == '1':
+            useract.get_all_category()
+        if choice == '2':
+            flag = False
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
-
-
-class Cart:
-
-    def view(self):
-        pass
-
-
-class Product:
-    pass
-
+    main()

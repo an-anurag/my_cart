@@ -21,6 +21,7 @@ class UserActivity:
 
     def get_all_category(self):
         category = session.query(Category).all()
+        print(category)
         return category
 
     def get_all_products(self):
@@ -83,3 +84,7 @@ class UserCart:
     def remove_product(self):
         pass
 
+
+ua = UserActivity()
+print(ua.get_all_category())
+print(ua.get_product('phone'))

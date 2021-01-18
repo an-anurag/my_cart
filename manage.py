@@ -16,10 +16,7 @@ parser = argparse.ArgumentParser()
 
 # Add the arguments
 parser.add_argument('-m', metavar='--makemigration', type=str, dest='migrate', help='create the database tables')
-parser.add_argument('-r', metavar='--runserver', type=str, dest='run', help='run the flask server')
-parser.add_argument('-i', metavar='--ipaddress', type=str, dest='ip', help='create client license entry to auth table')
-parser.add_argument('-n', metavar='--clientname', type=str, dest='name', help='add client name entry to the auth table')
-parser.add_argument('-f', metavar='--flushdb', type=str, dest='flush', help='clean db by deleting all records')
+
 
 # Execute the parse_args() method
 args = parser.parse_args()

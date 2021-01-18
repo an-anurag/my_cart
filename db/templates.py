@@ -20,17 +20,19 @@ class UserActivity:
         pass
 
     def get_all_category(self):
-        category = session.query(Category).all()
-        print(category)
-        return category
+        cats = session.query(Category).all()
+        for cat in cats:
+            print(cat)
 
     def get_all_products(self):
         products = session.query(Product).all()
-        print(products)
+        for prod in products:
+            print(prod)
 
     def get_products_from_category(self, category):
         products = session.query(Product).filter_by(category=category).all()
-        return products
+        for prod in products:
+            print(prod)
 
     def get_product(self, name):
         product = session.query(Product).get(name)
@@ -86,5 +88,4 @@ class UserCart:
 
 
 ua = UserActivity()
-print(ua.get_all_category())
-print(ua.get_product('phone'))
+# print(ua.get_all_category())

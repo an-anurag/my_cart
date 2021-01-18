@@ -1,4 +1,4 @@
-from db.users import UserActivity, AdminActivity, UserCart
+from db.templates import UserActivity, AdminActivity, UserCart
 
 
 def menu():
@@ -20,6 +20,8 @@ def main():
         choice = input()
         if choice == '1':
             useract.get_all_category()
+            cat_choice = input("Select category")
+            useract.get_products_from_category(category=cat_choice)
         if choice == '2':
             flag = False
 

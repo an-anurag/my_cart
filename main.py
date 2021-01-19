@@ -2,7 +2,7 @@ from db.templates import UserActivity, AdminActivity, UserCart
 
 
 def menu():
-    print("1. Browse Categories 2. exit")
+    print("1. Browse Categories 2. Exit")
 
 
 def main():

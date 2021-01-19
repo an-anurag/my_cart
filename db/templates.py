@@ -21,22 +21,31 @@ class UserActivity:
 
     def get_all_category(self):
         cats = session.query(Category).all()
+        print()
+        print("---------Categories----------")
         for cat in cats:
             print(cat)
+        print("----------------------------")
+        print()
 
-    def get_all_products(self):
-        products = session.query(Product).all()
-        for prod in products:
-            print(prod)
-
-    def get_products_from_category(self, category):
-        products = session.query(Product).filter_by(category=category).all()
-        for prod in products:
-            print(prod)
+    def get_products_by_category(self, category):
+        category = session.query(Category).filter(Category.name == category).one()
+        print()
+        print("----------Products-----------")
+        print(category.products)
+        print("----------------------------")
+        print()
 
     def get_product(self, name):
-        product = session.query(Product).get(name)
-        return product
+        product = session.query(Product).filter(Product.name == name).one()
+        print()
+        print("-------Product details------")
+        print(product.name)
+        print(product.description)
+        print(product.price)
+        print("----------------------------")
+        print()
+
 
     def add_to_cart(self, product_id):
         cart = session.query(Product)

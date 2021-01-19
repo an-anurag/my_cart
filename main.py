@@ -9,21 +9,23 @@ def main():
     print('******************************************************')
     print('WELCOME TO MY CART'.center(50))
     print('******************************************************')
-    useract = UserActivity()
-    adminact = AdminActivity()
+    user_act = UserActivity()
+    admin_act = AdminActivity()
     cart = UserCart()
     flag = True
 
     while flag:
-        print("select your choice\n")
+        print("Enter your choice\n")
         menu()
         choice = input()
+
         if choice == '1':
-            useract.get_all_category()
+            user_act.get_all_category()
             cat_choice = input("Select category\n")
-            useract.get_products_by_category(category=cat_choice)
+            user_act.get_products_by_category(category=cat_choice)
             prod_choice = input("Select Product\n")
-            useract.get_product(name=prod_choice)
+            user_act.get_product(name=prod_choice)
+
         if choice == '2':
             flag = False
 

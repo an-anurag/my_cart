@@ -1,33 +1,40 @@
-from db.templates import UserActivity, AdminActivity, UserCart
-
-
-def menu():
-    print("1. Browse Categories 2. Exit")
+from src.interface import UserInterface
 
 
 def main():
-    print('******************************************************')
-    print('WELCOME TO MY CART'.center(50))
-    print('******************************************************')
-    user_act = UserActivity()
-    admin_act = AdminActivity()
-    cart = UserCart()
-    flag = True
+    """
+    Driver code for mycart
+    :return:
+    """
+    ui = UserInterface()
+    print('*' * 110)
+    splash = '''
+                                   __  ___     _____         __ 
+                                  /  |/  /_ __/ ___/__ _____/ /_
+                                 / /|_/ / // / /__/ _ `/ __/ __/
+                                /_/  /_/\_, /\___/\_,_/_/  \__/ 
+                                       /___/                           
+       '''
+    print(splash)
+    print('*' * 110)
+    print("Please login to continue\n")
+    username = input("Username: ")
+    password = input("Password: ")
 
-    while flag:
-        print("Enter your choice\n")
-        menu()
-        choice = input()
+    user = ui.user_act.login(username, password)
 
-        if choice == '1':
-            user_act.get_all_category()
-            cat_choice = input("Select category\n")
-            user_act.get_products_by_category(category=cat_choice)
-            prod_choice = input("Select Product\n")
-            user_act.get_product(name=prod_choice)
-
-        if choice == '2':
-            flag = False
+    if user:
+        if user.username == 'admin':
+            ui.title("Welcome Admin")
+            ui.admin_ui()
+        else:
+            ui.title('WELCOME %s' % username)
+            ui.user_act.username = username
+            ui.user_act.get_user_id()
+            # start ui
+            ui.user_ui()
+    else:
+        print("Invalid login, please try again")
 
 
 if __name__ == '__main__':
